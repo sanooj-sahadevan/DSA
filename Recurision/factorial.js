@@ -1,8 +1,10 @@
-function factorial(num){
-    if(num===0){
-        return 1
-    }
-    return num*factorial(num-1)
+function factorial(p) {
+  if(p ===1){
+    return p
+  }
+    return  p * factorial(p-1)
+  
+  
 }
 
   console.log(factorial(5))
