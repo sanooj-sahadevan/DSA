@@ -1,10 +1,11 @@
-recursion(10);
+recursion(1);
 
 
 
 function recursion(n) {
-   if(n<=0) return
+   if(n>=10){ return}
     console.log(n);
-    n--
+    n++
     recursion(n)
+   
 }
