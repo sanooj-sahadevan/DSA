@@ -21,18 +21,17 @@ console.log(bubble(a));
 // O(n^2)
 
 function bubble(a) {
-  let swap
-  do{
-    swap = false
-  for (i = 0; i < a.length; i++) {
-    if (a[i] > a[i + 1]) {
-      let temp = a[i];
-      a[i] = a[i + 1];
-      a[i + 1] = temp;
-      swap = true
-
+  let swap;
+  do {
+    swap = false;
+    for (i = 0; i < a.length; i++) {
+      if (a[i] > a[i + 1]) {
+        let temp = a[i];
+        a[i] = a[i + 1];
+        a[i + 1] = temp;
+        swap = true;
+      }
     }
-  }
-}while(swap)
-  return a
+  } while (swap);
+  return a;
 }

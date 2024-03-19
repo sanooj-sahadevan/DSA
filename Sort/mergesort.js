@@ -34,7 +34,7 @@ function mergesort(a) {
   let mid = Math.floor(a.length / 2);
   let start = a.slice(0, mid);
   let end = a.slice(mid);
-  return mergesort(mergesort(start), mergesort(end));
+  return merge(mergesort(start), mergesort(end));
 }
 
 function merge(start,end) {
