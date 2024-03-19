@@ -1,75 +1,76 @@
-class Circular {
+class CircularQue {
   constructor(capacity) {
     this.items = new Array(capacity);
-    this.currlength = 0;
-    this.capacity = capacity;
     this.front = -1;
     this.rear = -1;
+    this.capacity = capacity;
+    this.currlength = 0;
+  }
+  isFull() {
+    return this.capacity === this.currlength;
   }
 
-  isFull() {
-    return this.currlength === this.capacity;
-  }
-  isempty() {
+  isEmpty() {
     return this.currlength === 0;
   }
 
   size() {
     return this.currlength;
   }
+
+  enqueue(element) {
+    if (!this.isFull()) {
+      this.rear = (this.rear + 1) % this.capacity;
+      this.items[this.rear] = element;
+      this.currlength ++;
+      if (this.front === -1) {
+        this.front = this.rear;
+      }
+    } else {
+      console.log("Bye Bye");
+    }
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      console.log("Bye Bye");
+    } else {
+      const item = this.items[this.front];
+      this.items[this.front] = null;
+      this.front = (this.front + 1) % this.capacity;
+      this.currlength -= 1;
+      if (this.isEmpty()) {
+        this.front = -1;
+        this.rear = -1;
+      }
+    }
+  }
+  peek() {
+    return this.items[this.front];
+  }
   print() {
-    if (this.isempty()) {
-      console.log("bye");
+    if (this.isEmpty()) {
+      console.log("empty da");
     } else {
       let str = "";
       let i;
 
       for (i = this.front; i !== this.rear; i = (i + 1) % this.capacity) {
-        str += this.items[i] + "";
+        str += this.items[i] + " ";
       }
       str += this.items[i];
       console.log(str);
     }
   }
-
-  eq(element) {
-    if (!this.isFull()) {
-      this.rear = (this.rear + 1) % this.capacity;
-      this.items[this.rear] = element;
-      this.currlength += 1;
-      if (this.front === -1) {
-        this.front = this.rear;
-      }
-    }
-  }
-  dq() {
-    if (this.isempty()) {
-      return null;
-    }
-    const item = this.items[this.front];
-    this.items[this.front] = null;
-    this.currlength -= 1;
-    this.front = (this.front + 1) % this.capacity;
-
-    if (this.isempty()) {
-      this.front = -1;
-      this.rear = -1;
-    }
-
-    return item;
-  }
-  peek() {
-    return this.items[this.front];
-  }
 }
 
-const cir = new Circular(5);
-cir.eq(1);
-cir.eq(2);
-cir.eq(3);
-cir.dq(1);
-console.log(cir.peek());
-// console.log(cir.isempty());
-// console.log(cir.isFull());
-// console.log(cir.size());
-cir.print();
+const queue = new CircularQue(5);
+// console.log(queue.isFull());
+// console.log(queue.isEmpty());
+// console.log(queue.size());
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+queue.dequeue();
+console.log(queue.peek());
+queue.print();
