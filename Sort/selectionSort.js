@@ -12,5 +12,6 @@ function selection(arr) {
   }
   return arr;
 }
+/* worse case O(n^2) */
 
 console.log(selection(arr));
