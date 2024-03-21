@@ -13,6 +13,7 @@ class Stack {
   print() {
     console.log(this.item);
   }
+  
 }
 
 const stack = new Stack(5);
