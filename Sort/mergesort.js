@@ -37,8 +37,8 @@ function mergesort(a) {
   return merge(mergesort(start), mergesort(end));
 }
 
-function merge(start,end) {
-  let sorted = []
+function merge(start, end) {
+  let sorted = [];
   while (start.length && end.length) {
     if (start[0] <= end[0]) {
       sorted.push(start.shift());
@@ -47,5 +47,5 @@ function merge(start,end) {
     }
   }
 
-  return [...sorted,...start,...end];
+  return [...sorted, ...start, ...end];
 }
